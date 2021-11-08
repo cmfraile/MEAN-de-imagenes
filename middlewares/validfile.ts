@@ -1,10 +1,13 @@
 import { NextFunction, Request , Response } from 'express';
+import { FileArray, UploadedFile } from 'express-fileupload';
 
-const validFile = async( req:Request,res:Response,next:NextFunction ) => {
-    console.log(req.files);
-    if(!req.files || Object.keys(req.files).length === 0 || !req.files.archivo){
-        return res.status(400).send({msg:"sin ficheros en la paticion - validFile"});
+const validFile = async(req:Request,res:Response,next:NextFunction ) => {
+    const fichero = req.files;
+    if(!fichero){return res.status(400).send("Sin ficheros en la petición")};
+    if(Object.keys(fichero).length === 0 || Object.keys(fichero).length < 1){
+        return res.status(400).send('Ha llegado ninguno o mas de un fichero, y solo se admite uno');
     }
+    req.body.fichero = fichero[''];
     next();
 }
 
