@@ -1,6 +1,7 @@
 import express , { Application } from 'express';
 import cors from 'cors';
 const { dbC } = require('../db&storage/configdb');
+import fileUpload from 'express-fileupload';
 
 class Server {
 
@@ -22,6 +23,7 @@ class Server {
     middlewares(){
         this.app.use(cors());
         this.app.use(express.json());
+        this.app.use(fileUpload({useTempFiles:true,tempFileDir:'/tmp/'}));
         //this.app.use( express.static('public') );
     }
 
