@@ -1,6 +1,6 @@
 import express , { Application } from 'express';
 import cors from 'cors';
-const { dbC } = require('../db/configdb');
+const { dbC } = require('../db&storage/configdb');
 
 class Server {
 
