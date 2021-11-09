@@ -23,7 +23,7 @@ class Server {
     middlewares(){
         this.app.use(cors());
         this.app.use(express.json());
-        this.app.use(fileUpload({useTempFiles:true,tempFileDir:'/tmp/'}));
+        this.app.use(fileUpload({useTempFiles:true,tempFileDir:'/tmp/',createParentPath:true}));
         //this.app.use( express.static('public') );
     }
 
