@@ -1,5 +1,4 @@
 import { NextFunction, Request , Response } from 'express';
-import { FileArray, UploadedFile } from 'express-fileupload';
 
 const validFile = async(req:Request,res:Response,next:NextFunction ) => {
     const fichero = req.files;

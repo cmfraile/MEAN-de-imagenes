@@ -9,7 +9,6 @@ const uploadfile = (fichero:UploadedFile) => {
         const nTEMP = `${uuid4()}.${extension}`;
         const uP = path.join(__dirname,'../db&storage/storage',nTEMP);
         if(!eValidas.includes(extension)){return rj(`La extensión ${extension} no esta permitida`)};
-        //return rs({extension,nTEMP,uP});
         fichero.mv(uP,(err) => {
             if(err){rj(err)};
             rs(nTEMP);
