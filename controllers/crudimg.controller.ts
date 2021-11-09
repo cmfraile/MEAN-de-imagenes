@@ -1,16 +1,16 @@
 import { Response , Request } from "express";
 import { UploadedFile } from "express-fileupload";
-
 const { Pic } = require('../models/pic.model');
 const { uploadfile:uf } = require('../helpers/uploadfile');
 
+const dumbcall:string = `${process.env.ENVIROMENT}/api/crudimg/gdp`
+
 const getPicCollection = async(req:Request,res:Response) => {
     try {
-        const busqueda = await Pic.find();
-        for(let dato in busqueda){
-            console.log(busqueda[dato])
-        };
-        res.status(200).send('fin');
+        let busqueda = await Pic.find();
+        console.clear();
+        for(let dato in busqueda){const rutablanda = busqueda[dato].ruta;busqueda[dato].ruta = `${dumbcall}${rutablanda}`};
+        res.status(200).json(busqueda);
     } catch(err){res.status(500).json(err)}
 }
 
