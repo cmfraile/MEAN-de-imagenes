@@ -24,6 +24,7 @@ const postPicTEST = async(req:Request,res:Response) => {
 
 const getDUMBpic = async(req:Request,res:Response) => {
     try {
+        if(req.body.ruta == undefined){return};
         res.sendFile(req.body.ruta);
     } catch(err){res.status(500).json(err)}
 }

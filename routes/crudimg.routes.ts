@@ -1,9 +1,7 @@
 import { Router } from "express";
 import * as ev from 'express-validator';
 const { getPicCollection , postPicTEST , getDUMBpic } = require('../controllers/crudimg.controller');
-const { validFile } = require('../middlewares/validfile');
-const { validRoute } = require('../middlewares/validRoute');
-const { validMaster:VM } = require('../middlewares/validmaster');
+const { validRoute , validMaster:VM , validFile } = require('../middlewares/validadores');
 
 
 const _r = Router();
