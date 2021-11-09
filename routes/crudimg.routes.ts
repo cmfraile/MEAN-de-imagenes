@@ -1,15 +1,20 @@
 import { Router } from "express";
-import { body } from "express-validator";
-const { getTEST , postPicTEST } = require('../controllers/crudimg.controller');
+import * as ev from 'express-validator';
+const { getPicCollection , postPicTEST , getDUMBpic } = require('../controllers/crudimg.controller');
 const { validFile } = require('../middlewares/validfile');
+const { validRoute } = require('../middlewares/validRoute');
 const { validMaster:VM } = require('../middlewares/validmaster');
+
 
 const _r = Router();
 
-_r.get('/',[
-    body('cuerpo').not().isEmpty(),
+_r.get('/',getPicCollection);
+
+_r.get('/gdp/:ruta',[
+    ev.param('ruta').not().isEmpty(),
+    validRoute,
     VM
-],getTEST);
+],getDUMBpic);
 
 _r.post('/',[
     validFile,
