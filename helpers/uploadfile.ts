@@ -1,4 +1,5 @@
 import { UploadedFile } from "express-fileupload";
+import { existsSync , unlinkSync } from 'fs'
 import uuid4 from "uuid4";
 import path from 'path';
 
@@ -16,5 +17,13 @@ const uploadfile = (fichero:UploadedFile) => {
     });
 }
 
-module.exports = { uploadfile };
+const delfile = (place:string) => {
+    return new Promise((rs,rj) => {
+        const uP:string = path.join(__dirname,'../db&storage/storage',place);
+        if(existsSync(uP)){rs(unlinkSync(uP))};
+        rj();
+    });
+}
+
+module.exports = { uploadfile , delfile };
 
