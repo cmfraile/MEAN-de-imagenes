@@ -21,7 +21,6 @@ const delfile = (place:string) => {
     return new Promise((rs,rj) => {
         const uP:string = path.join(__dirname,'../db&storage/storage',place);
         if(existsSync(uP)){rs(unlinkSync(uP))};
-        rj();
     });
 }
 

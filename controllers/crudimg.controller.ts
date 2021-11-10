@@ -26,9 +26,9 @@ const delPIC = async(req:Request,res:Response) => {
     let aborrar = await Pic.findByIdAndDelete(req.params.id);
     if(aborrar !== null){
         await df(aborrar.ruta);
-        return res.status(200).send('fichero borrado del sistema');
+        return res.status(200).json(aborrar);
     } else {
-        return res.status(200).send('No habia nada que borrar.')
+        return res.status(200).json(aborrar);
     }
     
 }
