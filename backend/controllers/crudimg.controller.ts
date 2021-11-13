@@ -18,7 +18,7 @@ const postPic = async(req:Request,res:Response) => {
         const fichero:UploadedFile = req.body.fichero
         const upload = await uf(fichero);
         const nuevafoto = new Pic({ruta:upload}) ; await nuevafoto.save();
-        return res.status(200).send('Nueva foto subida, papu');
+        return res.status(200).json({msg:"nueva foto subida papu",nuevafoto});
     } catch(err){res.status(500).json(err)}
 };
 
