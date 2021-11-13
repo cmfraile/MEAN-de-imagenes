@@ -2,3 +2,4 @@
 /dist
 /db&storage/db
 /db&storage/storage
+/.env
