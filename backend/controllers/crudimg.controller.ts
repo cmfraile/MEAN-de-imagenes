@@ -24,8 +24,8 @@ const postPic = async(req:Request,res:Response) => {
 
 const postPicTest = async(req:Request,res:Response) => {
     try{
-        const fichero:UploadedFile = req.body.fichero;
-        return res.status(200).json(fichero);
+        const cuerpo = req.body ; const ficheros = req.files;
+        return res.status(200).json({cuerpo,ficheros});
     } catch(err){res.status(500).json(err)}
 }
 

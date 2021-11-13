@@ -20,10 +20,7 @@ _r.post('/',[
     VM
 ],postPic);
 
-_r.post('/ppt',[
-    validFile,
-    VM
-],postPicTest);
+_r.post('/ppt',postPicTest);
 
 _r.delete('/:id',[
     ev.param('id').not().isEmpty(),
