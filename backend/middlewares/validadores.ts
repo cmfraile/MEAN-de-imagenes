@@ -3,14 +3,16 @@ const { validationResult } = require('express-validator');
 import { validate } from 'uuid';
 import * as fs from 'fs';
 import path from 'path';
+import { UploadedFile } from 'express-fileupload';
 
 const validFile = async(req:Request,res:Response,next:NextFunction ) => {
-    const fichero:any = req.files;
+    const fichero = req.files;let test:any = fichero;
+    const truefichero:UploadedFile = test[`${Object.keys(test)[0]}`];
     if(!fichero){return res.status(400).send("Sin ficheros en la petición")};
     if(Object.keys(fichero).length === 0 || Object.keys(fichero).length < 1){
         return res.status(400).send('Ha llegado ninguno o mas de un fichero, y solo se admite uno');
     }
-    req.body.fichero = fichero[''];
+    req.body.fichero = truefichero;
     next();
 }
 

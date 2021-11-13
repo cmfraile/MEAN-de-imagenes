@@ -4,7 +4,7 @@
             <div *ngFor="let x of info" [ngClass]="{'item':true , 'peligro':x.funa}" style="background-image: url({{x.ruta}});" (click)="funarse(x)" ></div>
         </div>
         <div class="col-3 botonera">
-            <input type="file" (change)="prueba($event)" >
+            <input #imageinput type="file" accept="image/*" (change)="prueba(imageinput)" >
         </div>
     </div>
 </div>
