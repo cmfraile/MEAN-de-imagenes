@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="row">
+        <div class="col-9 coleccion">
+            <div *ngFor="let x of info" [ngClass]="{'item':true , 'peligro':x.funa}" style="background-image: url({{x.ruta}});" (click)="funarse(x)" ></div>
+        </div>
+        <div class="col-3 botonera">
+            <input #imageinput type="file" accept="image/*" (change)="prueba(imageinput)" >
+        </div>
+    </div>
+</div>
